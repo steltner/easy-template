@@ -1,0 +1,54 @@
+{
+    "name": "geste/easy-template",
+    "description": "gestes template based on laminas mezzio",
+    "type": "project",
+    "authors": [
+        {
+            "name": "Georg Steltner",
+            "email": "georg.steltner@gmail.com"
+        }
+    ],
+    "config": {
+        "process-timeout" : 0,
+        "sort-packages": true
+    },
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "https://github.com/steltner/easy-command.git"
+        }
+    ],
+    "require": {
+        "php": "^7.3",
+        "ext-curl": "*",
+        "ext-json": "*",
+        "ext-pdo": "*",
+        "filp/whoops": "^2.7",
+        "geste/easy-command": "*",
+        "laminas/laminas-component-installer": "^2.1.1",
+        "laminas/laminas-config-aggregator": "^1.0",
+        "laminas/laminas-diactoros": "^1.7.1 || ^2.0",
+        "laminas/laminas-servicemanager": "^3.3",
+        "laminas/laminas-stdlib": "^3.1",
+        "laminas/laminas-zendframework-bridge": "^1.0",
+        "mezzio/mezzio": "^3.0.1",
+        "mezzio/mezzio-fastroute": "^3.0",
+        "mezzio/mezzio-helpers": "^5.0",
+        "mezzio/mezzio-laminasviewrenderer": "^2.0"
+    },
+    "require-dev": {
+    },
+    "autoload": {
+        "psr-4": {
+            "Application\\": "src/Application/",
+            "Bin\\": "src/Bin/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Application\\": "tests/phpunit",
+            "Behat\\": "tests/behat",
+            "Bin\\": "tests/Bin/"
+        }
+    }
+}

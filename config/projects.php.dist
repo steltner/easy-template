@@ -1,0 +1,21 @@
+<?php declare(strict_types=1);
+
+return [
+    'projects' => [
+        // first one is default and will be used if you do not add optional parameter project
+        [
+            // required, names to call this project
+            'names' => ['easy', 'easy-template'],
+            // required, project name/path relative to parent of ROOT
+            'path' => 'easy-template',
+            // path to configuration inside project
+            'phpunit' => 'tests/phpunit.xml',
+            // path to configuration inside project
+            'behat' => 'tests/behat.yml',
+            // do not use unusedcode and cleancode, because it's crap, especially for mezzio projects
+            'phpmd' => [
+                'ruleset' => 'codesize,controversial,design,naming',
+            ],
+        ],
+    ]
+];
