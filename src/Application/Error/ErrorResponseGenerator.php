@@ -37,10 +37,10 @@ class ErrorResponseGenerator
                 }
 
                 $trace[] = [
-                    'file' => $frame['file'],
+                    'file' => $frame['file'] ?? null,
                     'class' => $frame['class'] ?? null,
-                    'function' => $frame['function'],
-                    'line' => $frame['line'],
+                    'function' => $frame['function'] ?? null,
+                    'line' => $frame['line'] ?? null,
                     'args' => $args,
                 ];
             }
