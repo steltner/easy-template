@@ -14,7 +14,9 @@ return (new Application\ConfigResolver())->resolveProviders([
     // Add module based ConfigProviders
     Application\ConfigProvider::class,
 
-
     new PhpFileProvider(CONFIG . 'global.php.dist'),
     new PhpFileProvider(CONFIG . 'global.php'),
+
+    new PhpFileProvider(CONFIG . 'database.php.dist'),
+    new PhpFileProvider(CONFIG . 'database.php'),
 ]);
