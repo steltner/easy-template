@@ -1,16 +1,21 @@
 <?php declare(strict_types=1);
 
+define('DS', DIRECTORY_SEPARATOR);
+define('PS', '.');
+
+define('ROOT', realpath(__DIR__ . DS . '..') . DS);
+
+define('CONFIG', ROOT . 'config' . DS);
+
 // Delegate static file requests back to the PHP built-in webserver
 if (PHP_SAPI === 'cli-server' && $_SERVER['SCRIPT_FILENAME'] !== __FILE__) {
     return false;
 }
 
-require __DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'vendor' . DIRECTORY_SEPARATOR . 'autoload.php';
+require __DIR__ . DS . '..' . DS . 'vendor' . DS . 'autoload.php';
 
 (function () {
-    require __DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'src' . DIRECTORY_SEPARATOR . 'const.php';
-
-    $config = require CONFIG . 'config.php';
+    $config = require CONFIG . 'providers.php';
 
     $aggregatedConfig = (new Laminas\ConfigAggregator\ConfigAggregator($config))->getMergedConfig();
 

@@ -1,9 +1,8 @@
 config/global.php
-
 config/database.php
-config/commands.php
 config/projects.php
 
+build/
 .idea/
 phpcs.xml
 tests/behat.yml

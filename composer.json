@@ -16,6 +16,10 @@
         {
             "type": "vcs",
             "url": "https://github.com/steltner/easy-command.git"
+        },
+        {
+            "type": "vcs",
+            "url": "https://github.com/steltner/easy-resolver.git"
         }
     ],
     "require": {
@@ -25,6 +29,7 @@
         "ext-pdo": "*",
         "filp/whoops": "^2.7",
         "geste/easy-command": "*",
+        "geste/easy-resolver": "*",
         "laminas/laminas-component-installer": "^2.1.1",
         "laminas/laminas-config-aggregator": "^1.0",
         "laminas/laminas-diactoros": "^1.7.1 || ^2.0",
