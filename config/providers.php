@@ -4,7 +4,6 @@ use Laminas\ConfigAggregator\PhpFileProvider;
 
 return (new Easy\InvocableResolver())->resolveList([
     Laminas\HttpHandlerRunner\ConfigProvider::class,
-    Mezzio\LaminasView\ConfigProvider::class,
     Mezzio\Router\FastRouteRouter\ConfigProvider::class,
 
     Mezzio\Helper\ConfigProvider::class,

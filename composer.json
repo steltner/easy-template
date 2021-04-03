@@ -12,18 +12,8 @@
         "process-timeout" : 0,
         "sort-packages": true
     },
-    "repositories": [
-        {
-            "type": "vcs",
-            "url": "https://github.com/steltner/easy-command.git"
-        },
-        {
-            "type": "vcs",
-            "url": "https://github.com/steltner/easy-resolver.git"
-        }
-    ],
     "require": {
-        "php": "^7.3",
+        "php": ">=8",
         "ext-curl": "*",
         "ext-json": "*",
         "ext-pdo": "*",
@@ -35,11 +25,9 @@
         "laminas/laminas-diactoros": "^1.7.1 || ^2.0",
         "laminas/laminas-servicemanager": "^3.3",
         "laminas/laminas-stdlib": "^3.1",
-        "laminas/laminas-zendframework-bridge": "^1.0",
         "mezzio/mezzio": "^3.0.1",
         "mezzio/mezzio-fastroute": "^3.0",
-        "mezzio/mezzio-helpers": "^5.0",
-        "mezzio/mezzio-laminasviewrenderer": "^2.0"
+        "mezzio/mezzio-helpers": "^5.0"
     },
     "require-dev": {
     },
