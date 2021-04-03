@@ -2,18 +2,15 @@
 
 namespace Application\Handler;
 
-use PHPUnit\Framework\TestCase;
-use Psr\Container\ContainerInterface;
+use Application\FactoryTestCase;
 
-class IndexHandlerFactoryTest extends TestCase
+class IndexHandlerFactoryTest extends FactoryTestCase
 {
-    public function testFactory()
+    public function testFactory(): void
     {
-        $container = $this->prophesize(ContainerInterface::class);
+        $this->factory = new IndexHandlerFactory();
 
-        $factory = new IndexHandlerFactory();
-
-        $response = $factory($container->reveal());
+        $response = ($this->factory)($this->container);
 
         $this->assertInstanceOf(IndexHandler::class, $response);
     }

@@ -1,8 +1,7 @@
 <?php declare(strict_types=1);
 
-namespace Application\Bin\Command;
+namespace Bin\Command;
 
-use Bin\Command\ExampleCommand;
 use Easy\Command\AbstractCommand;
 use PHPUnit\Framework\TestCase;
 

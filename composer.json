@@ -33,15 +33,14 @@
     },
     "autoload": {
         "psr-4": {
-            "Application\\": "src/Application/",
-            "Bin\\": "src/Bin/"
+            "Application\\": "src/Application",
+            "Bin\\": "src/Bin"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Application\\": "tests/phpunit",
-            "Behat\\": "tests/behat",
-            "Bin\\": "tests/Bin/"
+            "": "tests/phpunit",
+            "Behat\\": "tests/behat"
         }
     }
 }

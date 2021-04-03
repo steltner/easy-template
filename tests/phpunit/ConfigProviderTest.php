@@ -2,16 +2,15 @@
 
 use Easy\InvocableResolver;
 use Mezzio\Application as MezzioApplication;
-use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
-class ApplicationConfigTest extends TestCase
+class ConfigProviderTest extends TestCase
 {
     public function testConfigProvider(): void
     {
-        $application = $this->getApplicationMock();
+        $application = $this->createMock(MezzioApplication::class);
 
-        $providers = (new InvocableResolver)->resolveList(
+        $providers = (new InvocableResolver())->resolveList(
             [
                 new Application\ConfigProvider(),
 
@@ -37,14 +36,6 @@ class ApplicationConfigTest extends TestCase
     {
         $this->expectException(InvalidArgumentException::class);
 
-        (new InvocableResolver)->resolveList(['abc']);
-    }
-
-    /**
-     * @return MezzioApplication|MockObject
-     */
-    public function getApplicationMock(): MezzioApplication
-    {
-        return $this->getMockBuilder(MezzioApplication::class)->disableOriginalConstructor()->getMock();
+        (new InvocableResolver())->resolveList(['abc']);
     }
 }

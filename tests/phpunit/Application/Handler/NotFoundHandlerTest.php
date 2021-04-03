@@ -2,17 +2,16 @@
 
 namespace Application\Handler;
 
+use Application\HandlerTestCase;
 use Laminas\Diactoros\Response\JsonResponse;
-use PHPUnit\Framework\TestCase;
-use Psr\Http\Message\ServerRequestInterface;
 
-class NotFoundHandlerTest extends TestCase
+class NotFoundHandlerTest extends HandlerTestCase
 {
-    public function testResponse()
+    public function testResponse(): void
     {
-        $handler = new NotFoundHandler();
+        $this->handler = new NotFoundHandler();
 
-        $response = $handler->handle($this->prophesize(ServerRequestInterface::class)->reveal());
+        $response = $this->handler->handle($this->request);
 
         $this->assertInstanceOf(JsonResponse::class, $response);
         $this->assertSame(404, $response->getStatusCode());

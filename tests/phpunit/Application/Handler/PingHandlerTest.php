@@ -2,17 +2,16 @@
 
 namespace Application\Handler;
 
+use Application\HandlerTestCase;
 use Laminas\Diactoros\Response\JsonResponse;
-use PHPUnit\Framework\TestCase;
-use Psr\Http\Message\ServerRequestInterface;
 
-class PingHandlerTest extends TestCase
+class PingHandlerTest extends HandlerTestCase
 {
-    public function testResponse()
+    public function testResponse(): void
     {
-        $handler = new PingHandler();
+        $this->handler = new PingHandler();
 
-        $response = $handler->handle($this->prophesize(ServerRequestInterface::class)->reveal());
+        $response = $this->handler->handle($this->request);
 
         $json = json_decode($response->getBody()->getContents(), true);
 
