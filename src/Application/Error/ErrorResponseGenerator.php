@@ -13,8 +13,7 @@ use function is_object;
 
 class ErrorResponseGenerator
 {
-    /** @var bool */
-    private $development;
+    private bool $development;
 
     public function __construct(bool $development = false)
     {

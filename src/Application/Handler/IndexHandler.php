@@ -9,8 +9,7 @@ use Psr\Http\Server\RequestHandlerInterface;
 
 class IndexHandler implements RequestHandlerInterface
 {
-    /** @var bool */
-    private $development;
+    private bool $development;
 
     public function __construct(bool $development = false)
     {
