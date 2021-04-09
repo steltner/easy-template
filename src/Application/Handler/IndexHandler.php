@@ -9,11 +9,8 @@ use Psr\Http\Server\RequestHandlerInterface;
 
 class IndexHandler implements RequestHandlerInterface
 {
-    private bool $development;
-
-    public function __construct(bool $development = false)
+    public function __construct(private bool $development = false)
     {
-        $this->development = $development;
     }
 
     public function handle(ServerRequestInterface $request): ResponseInterface

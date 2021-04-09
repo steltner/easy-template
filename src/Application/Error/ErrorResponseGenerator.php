@@ -3,21 +3,21 @@
 namespace Application\Error;
 
 use Laminas\Diactoros\Response\JsonResponse;
-use Laminas\Stratigility\Utils;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Throwable;
 
+use function array_walk_recursive;
 use function get_class;
+use function is_array;
+use function is_numeric;
 use function is_object;
+use function is_string;
 
 class ErrorResponseGenerator
 {
-    private bool $development;
-
-    public function __construct(bool $development = false)
+    public function __construct(private bool $development = false)
     {
-        $this->development = $development;
     }
 
     public function __invoke(
@@ -31,8 +31,10 @@ class ErrorResponseGenerator
             foreach ($exception->getTrace() as $frame) {
                 $args = [];
 
-                foreach ($frame['args'] as $argument) {
-                    $args[] = is_object($argument) ? get_class($argument) : $argument;
+                if (isset($frame['args'])) {
+                    foreach ($frame['args'] as $argument) {
+                        $args[] = is_object($argument) ? get_class($argument) : $argument;
+                    }
                 }
 
                 $trace[] = [
@@ -51,6 +53,8 @@ class ErrorResponseGenerator
                 'line' => $exception->getLine(),
                 'trace' => $trace,
             ];
+
+            $data = $this->utf8Encode($data);
         } else {
             $data = [
                 'type' => get_class($exception),
@@ -58,6 +62,42 @@ class ErrorResponseGenerator
             ];
         }
 
-        return new JsonResponse($data, Utils::getStatusCode($exception, $response));
+        return new JsonResponse($data, $this->getStatusCode($exception, $response));
+    }
+
+    private function utf8Encode(array $data): array
+    {
+        foreach ($data['trace'] as &$step) {
+            if (isset($step['args'])) {
+                array_walk_recursive(
+                    $step['args'],
+                    function (&$entry) {
+                        $entry = is_string($entry) || is_array($entry) ? mb_convert_encoding($entry, 'UTF-8') : $entry;
+                    }
+                );
+            }
+        }
+
+        return $data;
+    }
+
+    private function getStatusCode(Throwable $error, ResponseInterface $response): int
+    {
+        $errorCode = $error->getCode();
+
+        if (!is_numeric($errorCode)) {
+            return 500;
+        }
+
+        if ($errorCode >= 400 && $errorCode < 600) {
+            return (int)$errorCode;
+        }
+
+        $status = $response->getStatusCode();
+        if (!$status || $status < 400 || $status >= 600) {
+            $status = 500;
+        }
+
+        return $status;
     }
 }
