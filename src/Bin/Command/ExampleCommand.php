@@ -7,7 +7,7 @@ use Symfony\Component\Console\Input\InputOption;
 
 class ExampleCommand extends AbstractCommand
 {
-    protected function configure()
+    protected function configure(): void
     {
         $this
             ->setName('example')

@@ -6,7 +6,7 @@ use Psr\Container\ContainerInterface;
 
 class ErrorResponseGeneratorFactory
 {
-    public function __invoke(ContainerInterface $container) : ErrorResponseGenerator
+    public function __invoke(ContainerInterface $container): ErrorResponseGenerator
     {
         $config = $container->get('config');
 

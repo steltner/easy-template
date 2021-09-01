@@ -19,7 +19,7 @@ class ConfigProvider
         ];
     }
 
-    public function getDependencies(): array
+    private function getDependencies(): array
     {
         return [
             'aliases' => [
@@ -36,7 +36,7 @@ class ConfigProvider
         ];
     }
 
-    public function getAbstractFactoryConfig(): array
+    private function getAbstractFactoryConfig(): array
     {
         return [
         ];
