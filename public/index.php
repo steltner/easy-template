@@ -1,11 +1,11 @@
 <?php declare(strict_types=1);
 
-define('DS', DIRECTORY_SEPARATOR);
-define('PS', '.');
+const DS = DIRECTORY_SEPARATOR;
+const PS = '.';
 
-define('ROOT', realpath(__DIR__ . DS . '..') . DS);
+const ROOT = __DIR__ . DS . '..' . DS;
 
-define('CONFIG', ROOT . 'config' . DS);
+const CONFIG = ROOT . 'config' . DS;
 
 // Delegate static file requests back to the PHP built-in webserver
 if (PHP_SAPI === 'cli-server' && $_SERVER['SCRIPT_FILENAME'] !== __FILE__) {
@@ -24,7 +24,7 @@ require __DIR__ . DS . '..' . DS . 'vendor' . DS . 'autoload.php';
 
     $container = new Laminas\ServiceManager\ServiceManager($dependencies);
 
-    /** @var \Mezzio\Application $application */
+    /** @var Mezzio\Application $application */
     $application = $container->get(Mezzio\Application::class);
 
     (require CONFIG . 'pipeline.php')($application);
