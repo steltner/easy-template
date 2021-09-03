@@ -8,11 +8,11 @@ return [
             'names' => ['easy', 'easy-template'],
             // required, project name/path relative to parent of ROOT
             'path' => 'easy-template',
-            // path to configuration inside project
+            // path to phpunit configuration inside project
             'phpunit' => 'tests/phpunit.xml',
-            // path to configuration inside project
+            // path to behat configuration inside project
             'behat' => 'tests/behat.yml',
-            // do not use unusedcode and cleancode, because it's crap, especially for mezzio projects
+            // mess detectors rules to check
             'phpmd' => [
                 'ruleset' => 'codesize,controversial,design,naming',
             ],

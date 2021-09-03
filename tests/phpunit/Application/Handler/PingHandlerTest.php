@@ -2,7 +2,7 @@
 
 namespace Application\Handler;
 
-use Application\HandlerTestCase;
+use Easy\Test\HandlerTestCase;
 use Laminas\Diactoros\Response\JsonResponse;
 
 class PingHandlerTest extends HandlerTestCase

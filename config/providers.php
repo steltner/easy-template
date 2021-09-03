@@ -12,6 +12,7 @@ return (new Easy\InvocableResolver())->resolveList([
 
     // Add module based ConfigProviders
     Easy\ConfigProvider::class,
+    Easy\Error\ConfigProvider::class,
 
     Application\ConfigProvider::class,
     Bin\ConfigProvider::class,

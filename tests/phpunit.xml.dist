@@ -15,8 +15,5 @@
         <include>
             <directory suffix=".php">../src</directory>
         </include>
-        <exclude>
-            <directory>../src/Application/Error</directory>
-        </exclude>
     </coverage>
 </phpunit>

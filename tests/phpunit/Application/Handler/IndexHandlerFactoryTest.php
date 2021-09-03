@@ -2,7 +2,7 @@
 
 namespace Application\Handler;
 
-use Application\FactoryTestCase;
+use Easy\Test\FactoryTestCase;
 
 class IndexHandlerFactoryTest extends FactoryTestCase
 {

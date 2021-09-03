@@ -4,7 +4,6 @@ namespace Application;
 
 use Laminas\ServiceManager\AbstractFactory\ConfigAbstractFactory;
 use Mezzio\Application;
-use Mezzio\Middleware\ErrorResponseGenerator;
 
 /**
  * @SuppressWarnings(PHPMD.CouplingBetweenObjects)
@@ -30,8 +29,6 @@ class ConfigProvider
             ],
             'factories' => [
                 Handler\IndexHandler::class => Handler\IndexHandlerFactory::class,
-
-                ErrorResponseGenerator::class => Error\ErrorResponseGeneratorFactory::class,
             ],
         ];
     }
