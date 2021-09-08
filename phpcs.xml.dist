@@ -3,7 +3,10 @@
     <arg value="p"/>
     <arg name="colors"/>
 
-    <rule ref="PSR2"/>
+    <rule ref="PSR12">
+        <exclude name="PSR12.Files.OpenTag.NotAlone" />
+        <exclude name="PSR12.Files.FileHeader.SpacingAfterBlock" />
+    </rule>
 
     <rule ref="Generic.Files.LineLength">
         <properties>
