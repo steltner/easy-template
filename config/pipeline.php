@@ -1,6 +1,6 @@
 <?php declare(strict_types=1);
 
-return function (Mezzio\Application $application) : void {
+return function (Mezzio\Application $application): void {
     $application->pipe(Laminas\Stratigility\Middleware\ErrorHandler::class);
 
     $application->pipe(Mezzio\Helper\ServerUrlMiddleware::class);
