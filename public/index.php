@@ -20,9 +20,11 @@ require __DIR__ . DS . '..' . DS . 'vendor' . DS . 'autoload.php';
     $aggregatedConfig = (new Laminas\ConfigAggregator\ConfigAggregator($config))->getMergedConfig();
 
     $dependencies = $aggregatedConfig['dependencies'];
+    unset($config['dependencies']);
+
     $dependencies['services']['config'] = $aggregatedConfig;
 
-    $container = new Laminas\ServiceManager\ServiceManager($dependencies);
+    $container = new Easy\ServiceManager($dependencies);
 
     /** @var Mezzio\Application $application */
     $application = $container->get(Mezzio\Application::class);
